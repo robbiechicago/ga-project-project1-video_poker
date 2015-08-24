@@ -71,18 +71,38 @@ function dealer() {
 }
 
 var finalCards = [];
+var finalVals = [];
+var finalSuits = [];
 
 function getFinalCards() {
   $('.upper-card').each(function() {
     console.log($(this).data('card-index'));
     var selectedIndex = $(this).data('card-index');
     var selectedCard = randTen[selectedIndex];
+    var val = selectedCard.value;
+    var su = selectedCard.suit;
     finalCards.push(selectedCard);
+    finalVals.push(val);
+    finalSuits.push(su);
   })
   console.log(finalCards);
+  console.log(finalVals);
+  console.log(finalSuits);
+  winChecker()
 }
 
+function winChecker() {
+  valCounter();
+}
 
+function valCounter() {
+  var counter = {};
+  $(finalVals).each(function() {
+    var num = $(this)[0];
+    counter[num] = counter[num] + 1 || 1;
+  });
+  console.log(counter);
+}
 
 
 
