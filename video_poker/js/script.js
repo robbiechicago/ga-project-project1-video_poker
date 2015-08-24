@@ -1,6 +1,9 @@
 $(document).ready(function(){
   console.log("Ready to go, RoHo");
-  var result;
+
+//-------------------------------------------------------------------------------------
+//DECK CREATION, CARD DEALING AND GAME MECHANICS
+//-------------------------------------------------------------------------------------
 
 //constructor function to make the individual cards
 function card(value, number, suit, name){
@@ -80,7 +83,8 @@ function getFinalCards() {
     console.log($(this).data('card-index'));
     var selectedIndex = $(this).data('card-index');
     var selectedCard = randTen[selectedIndex];
-    var val = selectedCard.value;
+    var val = parseInt(selectedCard.value);
+    console.log(typeof(val));
     var su = selectedCard.suit;
     finalCards.push(selectedCard);
     finalVals.push(val);
@@ -92,10 +96,18 @@ function getFinalCards() {
   winChecker()
 }
 
+//-------------------------------------------------------------------------------------
+//FINDING WINNERS
+//-------------------------------------------------------------------------------------
+
+//fire off all the win checking functions
 function winChecker() {
   valCounter();
+  suCounter();
+  straightFinder();
 }
 
+// counts the distinct card values. Creates an object which returns each value and the corresponding count.  This is used in the next function which looks for 2s, 3s and 4s.
 var counter = {};
 function valCounter() {
   $(finalVals).each(function() {
@@ -106,7 +118,7 @@ function valCounter() {
   kindAndHouseFinder(counter);
 }
 
-
+//using the above object to find 2s, 3s and 4s
 var valCounts = [];
 function kindAndHouseFinder(counter) {
   //create an array of values from the counter object
@@ -114,27 +126,77 @@ function kindAndHouseFinder(counter) {
     return v;
   });
   if (valCounts.length === 5) {
-    result = "five singles";
+    kindResult = "five";
   } else if (valCounts.length === 4) {
-    result = "pair";
+    kindResult = "pair";
   } else if (valCounts.length === 3) {
     if ($.inArray(3,valCounts) !== -1) {
-      result = "three-of-a-kind"
+      kindResult = "three"
     } else {
-      result = "two pair"
+      kindResult = "two-pair"
     };
   } else {
     if ($.inArray(3,valCounts) !== -1) {
-      result = "four-of-a-kind"
+      kindResult = "full-house"
     } else {
-      result = "full house"
+      kindResult = "four"
     };
   }
-  console.log(result);
+  console.log(kindResult);
   console.log(valCounts);
+};
+
+//does the same as val counter but for suits.  Counts how many of each suit there are.  Of course, we only care about one single suit - the next function looks at that
+var suitCounter = {};
+function suCounter() {
+  $(finalSuits).each(function() {
+    var num = $(this)[0];
+    suitCounter[num] = suitCounter[num] + 1 || 1;
+  });
+  console.log(suitCounter);
+  flushFinder(suitCounter);
+};
+
+//takes the suits count object, creates an array and hopes to find a length of 1 which indicates that all five cards have the same suit.  kerching!
+var suitCounts = [];
+function flushFinder(suitCounter) {
+  //create an array of values from the counter object
+  suitCounts = $.map(suitCounter, function(v, i) {
+    return v;
+  });
+  if (valCounts.length === 1) {
+    flushResult = "flush";
+  } else {
+    flushResult = "noflush";
+  }
+  console.log("flush? " + flushResult);
 }
 
-function suitsCounter()
+//looks for all instances of (i+1)-i = 1, ie the difference between all integers is 1 and therefore we got ourselves a straight
+function straightFinder() {
+  var straights = finalVals.sort(function(a, b){return a-b});
+  $('straights').each(function(i) {
+    if ((i + 1) - i !== 1) {
+      straightResult = "nostraight"
+      console.log("straight? " + straightResult);
+      return straightResult;
+    }     
+  })
+  straightResult = "nostraight"
+  console.log("straight? " + straightResult); 
+  return straightResult; 
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
