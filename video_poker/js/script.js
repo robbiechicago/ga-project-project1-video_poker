@@ -44,12 +44,9 @@ function tenRandomCards() {
 function firstFiveCards() {
   $('.card-space').each(function(i) {
     $(this).html(randTen[i].name);
-    console.log(i);
   });
 };
 
-console.log(deck);
-console.log(randTen);
 
 $('.card-space').click(held);
 
@@ -78,7 +75,11 @@ var finalCards = [];
 function getFinalCards() {
   $('.upper-card').each(function() {
     console.log($(this).data('card-index'));
+    var selectedIndex = $(this).data('card-index');
+    var selectedCard = randTen[selectedIndex];
+    finalCards.push(selectedCard);
   })
+  console.log(finalCards);
 }
 
 
