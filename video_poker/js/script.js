@@ -14,7 +14,6 @@ function deckArray() {
   this.numbers = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
   this.suits = ['D','H','S','C'];
   var cards = [];
-    
   for(var i = 0, iLen = this.suits.length; i < iLen; i++) {
     for(var j = 0, jLen = this.numbers.length; j < jLen; j++) {
       cards.push(new card(j+2, this.numbers[j], this.suits[i], this.numbers[j] + this.suits[i]));
@@ -28,26 +27,26 @@ var deck = deckArray();
 var randTen = [];
 var aRandTen = tenRandomCards();
 
-
-console.log(deck[25]);
-
-//create five random cards
-//THIS IS NOT RIGHT!  NEED TO USE ARRAYS AND ARRAY LENGTH TO ASSURE NO DUPLICATION, YO
-// var card1 = Math.floor(Math.random()*52)
-// var card2 = Math.floor(Math.random()*52)
-// var card3 = Math.floor(Math.random()*52)
-// var card4 = Math.floor(Math.random()*52)
-// var card5 = Math.floor(Math.random()*52)
-
+// Get ten random card.  Ensure no duplication.
 function tenRandomCards() {
   for (var i = 0; i < 10; i++) {
     var randIndex = Math.floor(Math.random()*deck.length);
     var randCard = deck[randIndex];
-    console.log(randCard);
+    var randCardName = deck[randIndex].name;
+    // console.log(randCard);
+    console.log("card " + (i+1) + ": " + randCardName);
     deck.splice(randIndex,1);
     randTen.push(randCard);
   }
+  firstFiveCards();
 }
+
+function firstFiveCards() {
+  $('.card-space').each(function(i) {
+    $(this).html(randTen[i].name);
+    console.log(i);
+  });
+};
 
 console.log(deck);
 console.log(randTen);
