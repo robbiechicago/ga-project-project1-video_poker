@@ -51,6 +51,22 @@ function firstFiveCards() {
 console.log(deck);
 console.log(randTen);
 
+$('.card-space').click(held);
+
+function held() {
+  if ($(this).hasClass('held')) {
+    $(this).removeClass('held');
+  } else {
+    $(this).addClass('held');
+  };
+};
+
+
+
+
+
+
+
 
 
 
