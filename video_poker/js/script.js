@@ -61,7 +61,16 @@ function held() {
   };
 };
 
+$('.deal').click(dealer);
 
+function dealer() {
+  $('.card-space').each(function() {
+    if ($(this).hasClass('held')) {
+      $(this).removeClass('upper-card').addClass('lower-card');
+      $(this).next().removeClass('lower-card').addClass('upper-card');
+    };
+  });
+}
 
 
 
