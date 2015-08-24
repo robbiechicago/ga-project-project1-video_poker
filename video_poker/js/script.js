@@ -1,5 +1,6 @@
 $(document).ready(function(){
   console.log("Ready to go, RoHo");
+  var result;
 
 //constructor function to make the individual cards
 function card(value, number, suit, name){
@@ -95,17 +96,45 @@ function winChecker() {
   valCounter();
 }
 
+var counter = {};
 function valCounter() {
-  var counter = {};
   $(finalVals).each(function() {
     var num = $(this)[0];
     counter[num] = counter[num] + 1 || 1;
   });
   console.log(counter);
+  kindAndHouseFinder(counter);
 }
 
 
+var valCounts = [];
+function kindAndHouseFinder(counter) {
+  //create an array of values from the counter object
+  valCounts = $.map(counter, function(v, i) {
+    return v;
+  });
+  if (valCounts.length === 5) {
+    result = "five singles";
+  } else if (valCounts.length === 4) {
+    result = "pair";
+  } else if (valCounts.length === 3) {
+    if ($.inArray(3,valCounts) !== -1) {
+      result = "three-of-a-kind"
+    } else {
+      result = "two pair"
+    };
+  } else {
+    if ($.inArray(3,valCounts) !== -1) {
+      result = "four-of-a-kind"
+    } else {
+      result = "full house"
+    };
+  }
+  console.log(result);
+  console.log(valCounts);
+}
 
+function suitsCounter()
 
 
 
