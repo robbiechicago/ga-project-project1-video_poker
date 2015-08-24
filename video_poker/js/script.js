@@ -34,7 +34,7 @@ function tenRandomCards() {
     var randCard = deck[randIndex];
     var randCardName = deck[randIndex].name;
     // console.log(randCard);
-    console.log("card " + (i+1) + ": " + randCardName);
+    console.log("card " + (i+1) + " (index " + i + "): " + randCardName);
     deck.splice(randIndex,1);
     randTen.push(randCard);
   }
@@ -55,9 +55,9 @@ $('.card-space').click(held);
 
 function held() {
   if ($(this).hasClass('held')) {
-    $(this).removeClass('held');
+    $(this).removeClass('held').addClass('chuck');
   } else {
-    $(this).addClass('held');
+    $(this).removeClass('chuck').addClass('held');
   };
 };
 
@@ -65,14 +65,21 @@ $('.deal').click(dealer);
 
 function dealer() {
   $('.card-space').each(function() {
-    if ($(this).hasClass('held')) {
+    if ($(this).hasClass('chuck')) {
       $(this).removeClass('upper-card').addClass('lower-card');
       $(this).next().removeClass('lower-card').addClass('upper-card');
     };
   });
+  getFinalCards();
 }
 
+var finalCards = [];
 
+function getFinalCards() {
+  $('.upper-card').each(function() {
+    console.log($(this).data('card-index'));
+  })
+}
 
 
 
