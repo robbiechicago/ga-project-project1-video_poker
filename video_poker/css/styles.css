@@ -21,9 +21,9 @@ h1 {
 
 .stake-box {
   display: inline-block;
-  width: 50px;
-  height: 35px;
-  margin: 5px;
+  width: 100px;
+  height: 85px;
+  margin: 10px;
   border: 1px solid black;
   padding-top: 15px;
 }
@@ -45,16 +45,16 @@ h1 {
 }
 
 .card-space {
-  width: 50px;
-  height: 50px;
-  margin: 5px;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
   border: 1px solid black;
 }
 
 .held {
-  width: 50px;
-  height: 50px;
-  margin: 5px;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
   border: 1px solid hotpink;
 }
 
@@ -64,6 +64,11 @@ h1 {
 
 #play-again {
   display: none;
+}
+
+img {
+  width: 70px;
+  height: 70px;
 }
 
 /* the below is robbed from https://gist.github.com/debloper/1476243 and being tested */

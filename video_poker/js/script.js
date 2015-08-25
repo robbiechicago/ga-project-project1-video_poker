@@ -39,21 +39,23 @@ function upperLine() {
 //-------------------------------------------------------------------------------------
 
 //constructor function to make the individual cards
-function card(value, number, suit, name){
+function card(value, number, suit, name, image){
   this.value = value;
   this.number = number;
   this.suit = suit;
   this.name = name;
+  this.image = image;
 }
 
 //create a deck array using the card constructor
 function deckArray() {
   this.numbers = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
   this.suits = ['D','H','S','C'];
+  this.images = ['<img src="images/diamond.png">','<img src="images/heart.png">','<img src="images/spade.png">','<img src="images/club.png">']
   var cards = [];
   for(var i = 0, iLen = this.suits.length; i < iLen; i++) {
     for(var j = 0, jLen = this.numbers.length; j < jLen; j++) {
-      cards.push(new card(j+2, this.numbers[j], this.suits[i], this.numbers[j] + this.suits[i]));
+      cards.push(new card(j+2, this.numbers[j], this.suits[i], this.numbers[j] + this.suits[i], this.images[i]));
     }
   }
   return cards;
@@ -85,7 +87,8 @@ function tenRandomCards() {
 
 function firstFiveCards() {
   $('.card-space').each(function(i) {
-    $(this).html(randTen[i].name);
+    // $(this).html(randTen[i].name);
+    $(this).html(randTen[i].number + randTen[i].image);
   });
 };
 
@@ -117,6 +120,9 @@ var finalVals = [];
 var finalSuits = [];
 
 function getFinalCards() {
+  finalCards = [];
+  finalVals = [];
+  finalSuits = [];
   $('.upper-card').each(function() {
     console.log($(this).data('card-index'));
     var selectedIndex = $(this).data('card-index');
@@ -148,6 +154,7 @@ function winChecker() {
 // counts the distinct card values. Creates an object which returns each value and the corresponding count.  This is used in the next function which looks for 2s, 3s and 4s.
 var counter = {};
 function valCounter() {
+  counter = {};
   $(finalVals).each(function() {
     var num = $(this)[0];
     counter[num] = counter[num] + 1 || 1;
@@ -161,6 +168,8 @@ var valCounts = [];
 var pairVal;
 function kindAndHouseFinder(counter) {
   //create an array of values from the counter object
+  valCounts = [];
+  pairVal = '';
   valCounts = $.map(counter, function(v, i) {
     return v;
   });
@@ -195,6 +204,7 @@ function kindAndHouseFinder(counter) {
 //does the same as val counter but for suits.  Counts how many of each suit there are.  Of course, we only care about one single suit - the next function looks at that
 var suitCounter = {};
 function suCounter() {
+  suitCounter = {};
   $(finalSuits).each(function() {
     var num = $(this)[0];
     suitCounter[num] = suitCounter[num] + 1 || 1;
@@ -207,6 +217,7 @@ function suCounter() {
 var suitCounts = [];
 function flushFinder(suitCounter) {
   //create an array of values from the counter object
+  suitCounts = [];
   suitCounts = $.map(suitCounter, function(v, i) {
     return v;
   });
@@ -314,6 +325,7 @@ function updateBank(finalResult, prize) {
   bank = bank - stake;
   payout = stake * prize;
   bank = bank + payout;
+  $('#results').css('display', 'block');
   $('#results').html(finalResult + "  Bank = " + bank);
   $('.deal').css('display', 'none');
   AgainOrQuit();
@@ -338,10 +350,12 @@ function playAgain() {
     };
   });
   stakeSelect();
-
 };
 
-
+var leaderboard = {}
+function quit() {
+  location.reload();
+}
 
 
 
