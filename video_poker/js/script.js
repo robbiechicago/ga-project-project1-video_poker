@@ -15,8 +15,8 @@ function card(value, number, suit, name){
 
 //create a deck array using the card constructor
 function deckArray() {
-  this.numbers = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
-  this.suits = ['D','H','S','C'];
+  this.numbers = ['2','3','4','5','6'/*,'7','8','9','10','J','Q','K','A'*/];
+  this.suits = ['D','H'/*,'S','C'*/];
   var cards = [];
   for(var i = 0, iLen = this.suits.length; i < iLen; i++) {
     for(var j = 0, jLen = this.numbers.length; j < jLen; j++) {
@@ -84,7 +84,6 @@ function getFinalCards() {
     var selectedIndex = $(this).data('card-index');
     var selectedCard = randTen[selectedIndex];
     var val = parseInt(selectedCard.value);
-    console.log(typeof(val));
     var su = selectedCard.suit;
     finalCards.push(selectedCard);
     finalVals.push(val);
@@ -105,6 +104,7 @@ function winChecker() {
   valCounter();
   suCounter();
   straightFinder();
+  winnerPicker();
 }
 
 // counts the distinct card values. Creates an object which returns each value and the corresponding count.  This is used in the next function which looks for 2s, 3s and 4s.
@@ -164,7 +164,7 @@ function flushFinder(suitCounter) {
   suitCounts = $.map(suitCounter, function(v, i) {
     return v;
   });
-  if (valCounts.length === 1) {
+  if (suitCounts.length === 1) {
     flushResult = "flush";
   } else {
     flushResult = "noflush";
@@ -174,20 +174,26 @@ function flushFinder(suitCounter) {
 
 //looks for all instances of (i+1)-i = 1, ie the difference between all integers is 1 and therefore we got ourselves a straight
 function straightFinder() {
-  var straights = finalVals.sort(function(a, b){return a-b});
-  $('straights').each(function(i) {
-    if ((i + 1) - i !== 1) {
-      straightResult = "nostraight"
-      console.log("straight? " + straightResult);
-      return straightResult;
-    }     
-  })
-  straightResult = "nostraight"
+  if(finalVals.length === 5) {
+    var straights = []; 
+    straights = finalVals.sort(function(a, b){return a-b});
+    for (var i = 0; i < 4; i++) {
+      if (straights[i + 1] - straights[i] !== 1) {
+        straightResult = "nostraight"
+        console.log("straight? " + straightResult);
+        return straightResult;
+      };     
+    };
+  };
+  straightResult = "straight"
   console.log("straight? " + straightResult); 
   return straightResult; 
 }
 
-
+var finalResult;
+function winnerPicker() {
+  
+}
 
 
 
