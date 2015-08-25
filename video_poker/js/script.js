@@ -7,7 +7,9 @@ $(document).ready(function(){
 
 $('#start-button').click(starter);
 
+var origDiv;
 function starter() {
+  origDiv = $('#card-hole').clone;
   $(this).css('display', 'none');
   $('.card-holder').css('display', 'inline-block');
   bank = 100;
@@ -28,7 +30,8 @@ function stakeSelect() {
 };
 
 function upperLine() {
-  $('.card-hidden').removeClass('card-hidden').addClass('upper-card');
+  $('.card-hidden').removeClass('card-hidden').addClass('upper-card chuck');
+  deckMaker();
 };
 
 //-------------------------------------------------------------------------------------
@@ -57,9 +60,14 @@ function deckArray() {
 }
 
 //assign a deck to a variable deck
-var deck = deckArray();
+var deck;
 var randTen = [];
-var aRandTen = tenRandomCards();
+var aRandTen;
+function deckMaker() {
+  deck = deckArray();
+  randTen = [];
+  aRandTen = tenRandomCards();
+}
 
 // Get ten random card.  Ensure no duplication.
 function tenRandomCards() {
@@ -307,11 +315,31 @@ function updateBank(finalResult, prize) {
   payout = stake * prize;
   bank = bank + payout;
   $('#results').html(finalResult + "  Bank = " + bank);
-}
+  $('.deal').css('display', 'none');
+  AgainOrQuit();
+};
 
+function AgainOrQuit() {
+  $('#play-again').css('display', 'inline-block');
+  $('#again').click(playAgain);
+  $('#quit').click(quit);
+};
 
+function playAgain() {
+  // $('#card-hole').html(origDiv);
+  $('#results').css('display', 'none');
+  $('#play-again').css('display', 'none');
+  $('.stake-box').css('display', 'inline-block');
+  $('.card-space').each(function(){
+    if ($(this).data('card-index') % 2 === 0 || $(this).data('card-index') === 0) {
+      $(this).removeClass().addClass("card-space card-hidden");
+    } else {
+      $(this).removeClass().addClass("card-space lower-card");
+    };
+  });
+  stakeSelect();
 
-
+};
 
 
 

@@ -62,6 +62,10 @@ h1 {
   display: none;
 }
 
+#play-again {
+  display: none;
+}
+
 /* the below is robbed from https://gist.github.com/debloper/1476243 and being tested */
 
 .pulsor {
