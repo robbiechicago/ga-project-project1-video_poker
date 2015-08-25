@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet' type='text/css'>
   <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
   <script type="text/javascript" src="js/script.js"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css"></li>
@@ -41,18 +43,17 @@
         <div class="card-space card-hidden" data-card-index = "8"></div>
         <div class="card-space lower-card" data-card-index = "9"></div>
       </div>
-      <div class="card-holder">        
-        <button class="deal">Deal</button>
-      </div>
     </div> <!-- END card-hole -->
 
-    <div id="results"></div>
-    <div id="play-again">
-      <h2 class="play-again">Play again or quit?</h2>
-      <button id="again">Play Again</button>
-      <button id="quit">Quit</button>
-    </div><!-- END play-again -->
-
+    <div id="message-panel">
+      <div id="buttons"><button class="deal">Deal</button></div>
+      <div id="results"></div>
+      <div id="play-again">
+        <h2 class="play-again">Play again or quit?</h2>
+        <button id="again">Play Again</button>
+        <button id="quit">Quit</button>
+      </div><!-- END play-again -->
+    </div> <!-- END message-panel -->
 
   </div> <!-- END container -->
 </body>

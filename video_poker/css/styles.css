@@ -1,18 +1,36 @@
 body {
   background-color: white;
+  background-image: url("../images/swirl.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 100% 3%;
 }
 
 #container {
-  background-color: #DFE8ED;
+  background-top: 40px;
+  padding: 20px 50px;
   width: 80%;
-  display: inline-block;
   margin: 0 auto;
   text-align: center;
-  border: 1px solid hotpink;
+  /*border: 1px solid black;*/
 }
 
 h1 {
-  color: hotpink;
+  font-family: 'Tangerine', cursive;
+  font-size: 90px;
+  color: black;
+  text-align: left;
+}
+
+h3 {
+  font-family: Georgia1, Georgia, serif;
+  font-style: italic;
+}
+
+#start-button {
+  font-family: 'Tangerine', cursive;
+  font-size: 60px;
+  color: black;
 }
 
 #stake-text {
@@ -20,16 +38,27 @@ h1 {
 }
 
 .stake-box {
+  font-family: 'Parisienne', cursive;
+  font-size: 50px;
   display: inline-block;
   width: 100px;
   height: 85px;
   margin: 10px;
   border: 1px solid black;
+  border-radius: 3px;
   padding-top: 15px;
 }
 
 .deal {
   display: none;
+  background-color: white;
+  font-family: 'Parisienne', cursive;
+  font-size: 20px;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 
 .card-hidden {
@@ -48,18 +77,23 @@ h1 {
   width: 100px;
   height: 100px;
   margin: 10px;
-
+  border-bottom: 4px solid white;
 }
 
 .held {
   width: 100px;
   height: 100px;
   margin: 10px;
-  border-bottom: 4px solid hotpink;
+  border-bottom: 4px solid black;
 }
 
 .lower-card {
   display: none;
+}
+
+#message-panel {
+  width: auto;
+  height: 100px;
 }
 
 #play-again {
@@ -75,7 +109,8 @@ img {
 /* the below is robbed from https://gist.github.com/debloper/1476243 and being tested */
 
 .pulsor {
-    width: 90%;
+    display: inline-block;
+    width: 50%;
     margin: 64px;
     padding: 16px 32px;
     font-size: 32px;
@@ -89,14 +124,14 @@ img {
 }
 
 @-webkit-keyframes pulsate {
-    from { box-shadow: 0 0 10px #333; }
-    to { box-shadow: 0 0 20px hotpink; }
+    from { box-shadow: 0 0 10px #fff; }
+    to { box-shadow: 0 0 20px black; }
 }
 @-moz-keyframes pulsate {
-    from { box-shadow: 0 0 10px #333; }
-    to { box-shadow: 0 0 20px hotpink; }
+    from { box-shadow: 0 0 10px #fff; }
+    to { box-shadow: 0 0 20px black; }
 }
 @keyframes pulsate {
-    from { box-shadow: 0 0 10px #333; }
-    to { box-shadow: 0 0 20px hotpink; }
+    from { box-shadow: 0 0 10px #fff; }
+    to { box-shadow: 0 0 20px black; }
 }
