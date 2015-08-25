@@ -15,8 +15,8 @@ function card(value, number, suit, name){
 
 //create a deck array using the card constructor
 function deckArray() {
-  this.numbers = ['2','3','4','5','6'/*,'7','8','9','10','J','Q','K','A'*/];
-  this.suits = ['D','H'/*,'S','C'*/];
+  this.numbers = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+  this.suits = ['D','H','S','C'];
   var cards = [];
   for(var i = 0, iLen = this.suits.length; i < iLen; i++) {
     for(var j = 0, jLen = this.numbers.length; j < jLen; j++) {
@@ -120,15 +120,23 @@ function valCounter() {
 
 //using the above object to find 2s, 3s and 4s
 var valCounts = [];
+var pairVal;
 function kindAndHouseFinder(counter) {
   //create an array of values from the counter object
   valCounts = $.map(counter, function(v, i) {
     return v;
   });
   if (valCounts.length === 5) {
-    kindResult = "five";
+    kindResult = "singles";
   } else if (valCounts.length === 4) {
     kindResult = "pair";
+    //get value of pair
+    for (var key in counter) {
+      if (counter[key] === 2) {
+        pairVal = key;
+        console.log(pairVal)
+      };
+    };
   } else if (valCounts.length === 3) {
     if ($.inArray(3,valCounts) !== -1) {
       kindResult = "three"
@@ -177,6 +185,7 @@ function straightFinder() {
   if(finalVals.length === 5) {
     var straights = []; 
     straights = finalVals.sort(function(a, b){return a-b});
+    console.log("straights: " + straights);
     for (var i = 0; i < 4; i++) {
       if (straights[i + 1] - straights[i] !== 1) {
         straightResult = "nostraight"
@@ -190,17 +199,63 @@ function straightFinder() {
   return straightResult; 
 }
 
+
+//-------------------------------------------------------------------------------------
+//RETURNING WINNERS AND PRIZE AMOUNTS
+//-------------------------------------------------------------------------------------
+
+
 var finalResult;
+var prize;
 function winnerPicker() {
+  //ROYAL FLUSH
+  if (flushResult === 'flush' && straightResult === 'straight') {
+    if (straights[4] === 14) {
+      finalResult = 'Royal Flush!';
+      stake === 5 ? prize = 800 : 250;
+      return finalResult, prize;
+    } else {
+      finalResult = 'Straight Flush';
+      prize = 50;
+      return finalResult, prize;
+    };
+  } else if (kindResult === 'four') {
+    finalResult = 'Four-of-a-Kind';
+    prize = 25;
+    return finalResult, prize;
+  } else if (kindResult === 'full-house') {
+    finalResult = 'Full House!';
+    prize = 9;
+    return finalResult, prize;
+  } else if (flushResult === 'flush') {
+    finalResult = 'Flush!';
+    prize = 6;
+    return finalResult, prize;
+  } else if (straightResult === 'straight') {
+    finalResult = 'Straight!';
+    prize = 4;
+    return finalResult, prize;
+  } else if (kindResult === 'three') {
+    finalResult = 'Three-of-a-Kind!';
+    prize = 3;
+    return finalResult, prize;
+  } else if (kindResult === 'two-pair') {
+    finalResult = 'Two Pair!';
+    prize = 2;
+    return finalResult, prize;
+  } else if (kindResult === 'pair'  ) {
+    finalResult = 'Full House!';
+    prize = 9;
+    return finalResult, prize;
   
+}
+
 }
 
 
 
-
-
-
-
+var stake;
+stake = 1;
 
 
 
