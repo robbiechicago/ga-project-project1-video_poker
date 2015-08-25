@@ -214,62 +214,69 @@ function winnerPicker() {
       finalResult = 'Royal Flush!';
       stake === 5 ? prize = 800 : 250;
       console.log(finalResult + " - " + prize);
-      return finalResult, prize;
+      updateBank(finalResult, prize);
     } else {
       finalResult = 'Straight Flush';
       prize = 50;
       console.log(finalResult + " - " + prize);
-      return finalResult, prize;
+      updateBank(finalResult, prize);
     };
   } else if (kindResult === 'four') {
     finalResult = 'Four-of-a-Kind';
     prize = 25;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   } else if (kindResult === 'full-house') {
     finalResult = 'Full House!';
     prize = 9;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   } else if (flushResult === 'flush') {
     finalResult = 'Flush!';
     prize = 6;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   } else if (straightResult === 'straight') {
     finalResult = 'Straight!';
     prize = 4;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   } else if (kindResult === 'three') {
     finalResult = 'Three-of-a-Kind!';
     prize = 3;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   } else if (kindResult === 'two-pair') {
     finalResult = 'Two Pair!';
     prize = 2;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   } else if (kindResult === 'pair' && pairVal >= 11 ) {
     finalResult = 'Pair (Jacks or above)!';
     prize = 1;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   } else {
     finalResult = 'Sorry, no win.';
     prize = 0;
     console.log(finalResult + " - " + prize);
-    return finalResult, prize;
+    updateBank(finalResult, prize);
   }
 }
 
+//-------------------------------------------------------------------------------------
+//CREATE AND UPDATE BANK
+//-------------------------------------------------------------------------------------
 
+var stake = 1;
+var bank = 100;
+var payout;
 
-var stake;
-stake = 1;
-
-
+function updateBank(finalResult, prize) {
+  payout = stake * prize;
+  bank = bank + payout;
+  $('#results').html(finalResult + "  Bank = " + bank);
+}
 
 
 
