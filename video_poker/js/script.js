@@ -2,6 +2,27 @@ $(document).ready(function(){
   console.log("Ready to go, RoHo");
 
 //-------------------------------------------------------------------------------------
+//START GAME
+//-------------------------------------------------------------------------------------
+
+$('#start-button').click(starter);
+
+function starter() {
+  $(this).css('display', 'none');
+  $('.card-holder').css('display', 'inline-block');
+  bank = 100;
+  stakeSelect();
+}
+
+function stakeSelect() {
+  $('#bank').text(bank);
+  $('#stake-text').css('display', 'block');
+  $('.upper-card').each(function(i) {
+    $(this).html([i+1]);
+  });
+}
+
+//-------------------------------------------------------------------------------------
 //DECK CREATION, CARD DEALING AND GAME MECHANICS
 //-------------------------------------------------------------------------------------
 
@@ -269,7 +290,7 @@ function winnerPicker() {
 //-------------------------------------------------------------------------------------
 
 var stake = 1;
-var bank = 100;
+var bank;
 var payout;
 
 function updateBank(finalResult, prize) {

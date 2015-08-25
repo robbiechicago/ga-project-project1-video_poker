@@ -15,8 +15,16 @@ h1 {
   color: hotpink;
 }
 
+#stake-text {
+  display: none;
+}
+
+.deal {
+  display: none;
+}
+
 .card-holder {
-  display: inline-block;
+  display: none;
 }
 
 .card-space {
@@ -35,4 +43,33 @@ h1 {
 
 .lower-card {
   display: none;
+}
+
+/* the below is robbed from https://gist.github.com/debloper/1476243 and being tested */
+
+.pulsor {
+    width: 90%;
+    margin: 64px;
+    padding: 16px 32px;
+    font-size: 32px;
+    cursor: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #333;
+    -webkit-animation: pulsate 1s infinite alternate;
+    -moz-animation: pulsate 1s infinite alternate;
+    -animation: pulsate 1s infinite alternate;
+    text-shadow: 0 0 8px #ccc;
+}
+
+@-webkit-keyframes pulsate {
+    from { box-shadow: 0 0 10px #333; }
+    to { box-shadow: 0 0 20px hotpink; }
+}
+@-moz-keyframes pulsate {
+    from { box-shadow: 0 0 10px #333; }
+    to { box-shadow: 0 0 20px hotpink; }
+}
+@keyframes pulsate {
+    from { box-shadow: 0 0 10px #333; }
+    to { box-shadow: 0 0 20px hotpink; }
 }
