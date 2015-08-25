@@ -51,11 +51,66 @@ function card(value, number, suit, name, image){
 function deckArray() {
   this.numbers = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
   this.suits = ['D','H','S','C'];
-  this.images = ['<img src="images/diamond.png">','<img src="images/heart.png">','<img src="images/spade.png">','<img src="images/club.png">']
+  this.images = [
+                '<img src="images/2D.png">',
+                '<img src="images/3D.png">',
+                '<img src="images/4D.png">',
+                '<img src="images/5D.png">',
+                '<img src="images/6D.png">',
+                '<img src="images/7D.png">',
+                '<img src="images/8D.png">',
+                '<img src="images/9D.png">',
+                '<img src="images/10D.png">',
+                '<img src="images/JD.png">',
+                '<img src="images/QD.png">',
+                '<img src="images/KD.png">',
+                '<img src="images/AD.png">',
+                '<img src="images/2H.png">',
+                '<img src="images/3H.png">',
+                '<img src="images/4H.png">',
+                '<img src="images/5H.png">',
+                '<img src="images/6H.png">',
+                '<img src="images/7H.png">',
+                '<img src="images/8H.png">',
+                '<img src="images/9H.png">',
+                '<img src="images/10H.png">',
+                '<img src="images/JH.png">',
+                '<img src="images/QH.png">',
+                '<img src="images/KH.png">',
+                '<img src="images/AH.png">',
+                '<img src="images/2S.png">',
+                '<img src="images/3S.png">',
+                '<img src="images/4S.png">',
+                '<img src="images/5S.png">',
+                '<img src="images/6S.png">',
+                '<img src="images/7S.png">',
+                '<img src="images/8S.png">',
+                '<img src="images/9S.png">',
+                '<img src="images/10S.png">',
+                '<img src="images/JS.png">',
+                '<img src="images/QS.png">',
+                '<img src="images/KS.png">',
+                '<img src="images/AS.png">',
+                '<img src="images/2C.png">',
+                '<img src="images/3C.png">',
+                '<img src="images/4C.png">',
+                '<img src="images/5C.png">',
+                '<img src="images/6C.png">',
+                '<img src="images/7C.png">',
+                '<img src="images/8C.png">',
+                '<img src="images/9C.png">',
+                '<img src="images/10C.png">',
+                '<img src="images/JC.png">',
+                '<img src="images/QC.png">',
+                '<img src="images/KC.png">',
+                '<img src="images/AC.png">'
+                ]
   var cards = [];
+  var imgcounter = 0;
   for(var i = 0, iLen = this.suits.length; i < iLen; i++) {
     for(var j = 0, jLen = this.numbers.length; j < jLen; j++) {
-      cards.push(new card(j+2, this.numbers[j], this.suits[i], this.numbers[j] + this.suits[i], this.images[i]));
+      cards.push(new card(j+2, this.numbers[j], this.suits[i], this.numbers[j] + this.suits[i], this.images[imgcounter]));
+      imgcounter++;
     }
   }
   return cards;
@@ -88,7 +143,7 @@ function tenRandomCards() {
 function firstFiveCards() {
   $('.card-space').each(function(i) {
     // $(this).html(randTen[i].name);
-    $(this).html(randTen[i].number + randTen[i].image);
+    $(this).html(randTen[i].image);
   });
 };
 

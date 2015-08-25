@@ -48,14 +48,14 @@ h1 {
   width: 100px;
   height: 100px;
   margin: 10px;
-  border: 1px solid black;
+
 }
 
 .held {
   width: 100px;
   height: 100px;
   margin: 10px;
-  border: 1px solid hotpink;
+  border-bottom: 4px solid hotpink;
 }
 
 .lower-card {
@@ -69,6 +69,7 @@ h1 {
 img {
   width: 70px;
   height: 70px;
+  margin-top: 15px;
 }
 
 /* the below is robbed from https://gist.github.com/debloper/1476243 and being tested */
