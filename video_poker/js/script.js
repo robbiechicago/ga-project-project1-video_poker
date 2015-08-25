@@ -34,7 +34,7 @@ function upperLine() {
   $('#message-text').css('visibility', 'visible');
   $('#results').css('display', 'block');
   bank = bank - stake;
-  $('#results').html("Stake = " + stake + " coins.<br>Bank = " + bank +" coins.");
+  $('#results').html("<p>Stake = " + stake + " coins.  Bank = " + bank +" coins.</p>");
   deckMaker();
 };
 
@@ -384,9 +384,9 @@ function updateBank(finalResult, prize) {
   payout = stake * prize;
   bank = bank + payout;
   if (finalResult !== 'Sorry, no win.') {
-    $('#results').html("Winner!  " + finalResult + "  Bank = " + bank);
+    $('#results').html("<p>Winner!  " + finalResult + "  Bank = " + bank + "</p>");
   } else {
-    $('#results').html(finalResult + "  Bank = " + bank);
+    $('#results').html("<p>" + finalResult + "  Bank = " + bank + "</p>");
   };
   $('.deal').css('display', 'none');
   AgainOrQuit();

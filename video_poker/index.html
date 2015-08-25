@@ -48,13 +48,109 @@
     </div> <!-- END card-hole -->
 
     <div id="message-panel">
-      <div id="buttons"><button class="deal">Deal</button></div>
       <div id="results"></div>
+      <div id="buttons"><button class="deal">Deal</button></div>
       <div id="play-again">
         <button class="buttons" id="again">Play Again</button>
         <button class="buttons" id="quit">Quit</button>
       </div><!-- END play-again -->
     </div> <!-- END message-panel -->
+
+    <div id="payout-table">
+      <table>
+        <tr>
+          <th>Hand</th>
+          <th>Cards</th>
+          <th>1 Coin</th>
+          <th>2 Coins</th>
+          <th>3 Coins</th>
+          <th>4 Coins</th>
+          <th>5 Coins</th>
+        </tr>
+        <tr>
+          <td class="hand">Royal Flush</td>
+          <td>10, J, Q, K, A (same suit)</td>
+          <td>250</td>
+          <td>500</td>
+          <td>750</td>
+          <td>1000</td>
+          <td id="jackpot">4000</td>
+        </tr>
+        <tr>
+          <td class="hand">Straight Flush</td>
+          <td>Five consecutive cards, not ace-high (same suit)</td>
+          <td>50</td>
+          <td>100</td>
+          <td>150</td>
+          <td>200</td>
+          <td>250</td>
+        </tr>
+        <tr>
+          <td class="hand">Four-of-a-Kind</td>
+          <td>Four of the same value card</td>
+          <td>25</td>
+          <td>50</td>
+          <td>75</td>
+          <td>100</td>
+          <td>125</td>
+        </tr>
+        <tr>
+          <td class="hand">Full House</td>
+          <td>Three-of-a-Kind + a Pair</td>
+          <td>9</td>
+          <td>18</td>
+          <td>27</td>
+          <td>36</td>
+          <td>45</td>
+        </tr>
+        <tr>
+          <td class="hand">Flush</td>
+          <td>Five non-consecutive cards of the same suit</td>
+          <td>6</td>
+          <td>12</td>
+          <td>18</td>
+          <td>24</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td class="hand">Straight</td>
+          <td>Five consecutive cards with mixed suits</td>
+          <td>4</td>
+          <td>8</td>
+          <td>12</td>
+          <td>16</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td class="hand">Three-of-a-Kind</td>
+          <td>Three of the same value card</td>
+          <td>3</td>
+          <td>6</td>
+          <td>9</td>
+          <td>12</td>
+          <td>15</td>
+        </tr>
+        <tr>
+          <td class="hand">Two Pair</td>
+          <td>Two Pairs</td>
+          <td>2</td>
+          <td>4</td>
+          <td>6</td>
+          <td>8</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td class="hand">Pair (Jacks or better)</td>
+          <td>Pair of Jacks or higher value cards</td>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+        </tr>
+
+
+    </div><!--END payout-table -->
 
   </div> <!-- END container -->
 </body>
