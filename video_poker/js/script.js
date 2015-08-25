@@ -17,10 +17,19 @@ function starter() {
 function stakeSelect() {
   $('#bank').text(bank);
   $('#stake-text').css('display', 'block');
-  $('.upper-card').each(function(i) {
-    $(this).html([i+1]);
+  $('.stake-box').click(function(){
+    stake = $(this).data('stake');
+    console.log(stake);
+    $('#stake-text').css('display', 'none');
+    $('.stake-box').css('display', 'none');
+    $('.deal').css('display', 'inline');
+    upperLine();
   });
-}
+};
+
+function upperLine() {
+  $('.card-hidden').removeClass('card-hidden').addClass('upper-card');
+};
 
 //-------------------------------------------------------------------------------------
 //DECK CREATION, CARD DEALING AND GAME MECHANICS
@@ -289,11 +298,12 @@ function winnerPicker() {
 //CREATE AND UPDATE BANK
 //-------------------------------------------------------------------------------------
 
-var stake = 1;
+var stake;
 var bank;
 var payout;
 
 function updateBank(finalResult, prize) {
+  bank = bank - stake;
   payout = stake * prize;
   bank = bank + payout;
   $('#results').html(finalResult + "  Bank = " + bank);

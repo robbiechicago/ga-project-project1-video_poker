@@ -19,12 +19,29 @@ h1 {
   display: none;
 }
 
+.stake-box {
+  display: inline-block;
+  width: 50px;
+  height: 35px;
+  margin: 5px;
+  border: 1px solid black;
+  padding-top: 15px;
+}
+
 .deal {
+  display: none;
+}
+
+.card-hidden {
   display: none;
 }
 
 .card-holder {
   display: none;
+}
+
+.upper-card {
+  display: inline-block;
 }
 
 .card-space {
