@@ -31,6 +31,10 @@ function stakeSelect() {
 
 function upperLine() {
   $('.card-hidden').removeClass('card-hidden').addClass('upper-card chuck');
+  $('#message-text').css('visibility', 'visible');
+  $('#results').css('display', 'block');
+  bank = bank - stake;
+  $('#results').html("Stake = " + stake + " coins.<br>Bank = " + bank +" coins.");
   deckMaker();
 };
 
@@ -377,16 +381,19 @@ var bank;
 var payout;
 
 function updateBank(finalResult, prize) {
-  bank = bank - stake;
   payout = stake * prize;
   bank = bank + payout;
-  $('#results').css('display', 'block');
-  $('#results').html(finalResult + "  Bank = " + bank);
+  if (finalResult !== 'Sorry, no win.') {
+    $('#results').html("Winner!  " + finalResult + "  Bank = " + bank);
+  } else {
+    $('#results').html(finalResult + "  Bank = " + bank);
+  };
   $('.deal').css('display', 'none');
   AgainOrQuit();
 };
 
 function AgainOrQuit() {
+  $('#message-text').css('visibility', 'hidden');
   $('#play-again').css('display', 'inline-block');
   $('#again').click(playAgain);
   $('#quit').click(quit);

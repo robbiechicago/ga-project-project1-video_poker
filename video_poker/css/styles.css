@@ -22,7 +22,7 @@ h1 {
   text-align: left;
 }
 
-h3 {
+p {
   font-family: Georgia1, Georgia, serif;
   font-style: italic;
 }
@@ -37,7 +37,19 @@ h3 {
   display: none;
 }
 
+#stake-bank-message {
+  display: none;
+}
+
+#message-text {
+  visibility: hidden;
+  width: auto;
+  height: auto;
+  color: #bbb;
+}
+
 .stake-box {
+  background-color: #eee;
   font-family: 'Parisienne', cursive;
   font-size: 50px;
   display: inline-block;
@@ -51,12 +63,24 @@ h3 {
 
 .deal {
   display: none;
-  background-color: white;
+  background-color: #eee;
   font-family: 'Parisienne', cursive;
   font-size: 20px;
   width: auto;
   height: auto;
   padding: 10px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.buttons {
+  background-color: #eee;
+  font-family: 'Parisienne', cursive;
+  font-size: 20px;
+  width: auto;
+  height: auto;
+  padding: 10px;
+  margin: 30px 10px 0;
   border: 1px solid black;
   border-radius: 3px;
 }
@@ -117,9 +141,9 @@ img {
     cursor: auto;
     border-radius: 8px;
     box-shadow: 0 0 10px #333;
-    -webkit-animation: pulsate 1s infinite alternate;
-    -moz-animation: pulsate 1s infinite alternate;
-    -animation: pulsate 1s infinite alternate;
+    -webkit-animation: pulsate 2s infinite alternate;
+    -moz-animation: pulsate 2s infinite alternate;
+    -animation: pulsate 2s infinite alternate;
     text-shadow: 0 0 8px #ccc;
 }
 
